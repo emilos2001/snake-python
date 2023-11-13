@@ -63,8 +63,8 @@ def next_turn(snake, food):
     if x == food.coordinates[0] and y == food.coordinates[1]:
         global score
         score += 1
-        label.config(text="Score: ".format(score))
-        label2.config(text="Speed: ".format(SPEED))
+        label.config(text="Score:{}".format(score))
+        label2.config(text="Speed:{}".format(SPEED))
         canvas.delete("food")
         food = Food1()
     else:
