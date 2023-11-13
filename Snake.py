@@ -1,14 +1,14 @@
 from tkinter import *
 import random
 
+
 WIDTH = 450
 HEIGHT = 450
-SPEED = 120
+SPEED = 140
 SIZE = 25
-BODY = 3
+BODY = 1
 SNAKE_COLOR = "green"
 FOOD_COLOR1 = "red"
-FOOD_COLOR2 = "red"
 BACKGROUND_COLOR = "black"
 
 window = Tk()
@@ -18,6 +18,8 @@ score = 0
 direction = 'down'
 label = Label(window, text="Score:{}".format(score), fg="red", font=('consolas', 20))
 label.pack()
+label2 = Label(window, text="Speed:{}".format(SPEED), fg="red", font=('consolas', 15))
+label2.pack()
 canvas = Canvas(window, bg=BACKGROUND_COLOR, height=HEIGHT, width=WIDTH)
 canvas.pack()
 
@@ -42,7 +44,7 @@ class Food1:
         x = random.randint(0, (WIDTH // SIZE) - 1) * SIZE
         y = random.randint(0, (HEIGHT // SIZE) - 1) * SIZE
         self.coordinates = [x, y]
-        canvas.create_oval(x, y, x + SIZE, y + SIZE, fill=FOOD_COLOR1, tag="good-food")
+        canvas.create_oval(x, y, x + SIZE, y + SIZE, fill=FOOD_COLOR1, tag="food")
 
 
 def next_turn(snake, food):
@@ -61,7 +63,8 @@ def next_turn(snake, food):
     if x == food.coordinates[0] and y == food.coordinates[1]:
         global score
         score += 1
-        label.config(text="Score:{}".format(score))
+        label.config(text="Score: ".format(score))
+        label2.config(text="Speed: ".format(SPEED))
         canvas.delete("food")
         food = Food1()
     else:
@@ -108,7 +111,7 @@ def check_collision(snake):
 def game_over():
     canvas.delete(ALL)
     canvas.create_text(canvas.winfo_width() / 2, canvas.winfo_height() / 2,
-                       font=('consolas', 35), text="GAME OVER", fill="red", tag="gameover")
+                       font=('consolas', 35), text="GAME OVER", fill="red")
 
 
 window.update()
