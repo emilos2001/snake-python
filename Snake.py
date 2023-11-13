@@ -36,15 +36,6 @@ class Snake:
             square = canvas.create_rectangle(x, y, x + SIZE, y + SIZE, fill=SNAKE_COLOR, tag="snake")
             self.squares.append(square)
 
-
-class Food2:
-    def __init__(self):
-        z = random.randint(0, (WIDTH // SIZE) - 1) * SIZE
-        h = random.randint(0, (WIDTH // SIZE) - 1) * SIZE
-        self.coordinate = [z, h]
-        canvas.create_oval(z, h, z + SIZE, h + SIZE, fill=FOOD_COLOR2, tag="bad-food")
-
-
 class Food1:
 
     def __init__(self):
