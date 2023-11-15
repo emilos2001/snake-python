@@ -16,6 +16,8 @@ window.title("Snake game")
 window.resizable(False, False)
 score = 0
 direction = 'down'
+#but if you want start the game with random direction you need this:
+#direction = random.choice(['up', 'down', 'left', 'right']) here the snake will start in random direction
 label = Label(window, text="Score:{}".format(score), fg="red", font=('consolas', 20))
 label.pack()
 label2 = Label(window, text="Speed:{}".format(SPEED), fg="red", font=('consolas', 15))
